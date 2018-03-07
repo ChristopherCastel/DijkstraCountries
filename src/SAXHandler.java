@@ -12,13 +12,15 @@ public class SAXHandler extends DefaultHandler {
   boolean isLatitude;
   boolean isLongitude;
 
-  Aeroport aeroport = new Aeroport();
+  String iata = null;
+  double lat;
+  double lon;
 
   @Override
   public void startElement(String uri, String localName, String qName, Attributes attributes) {
 
     if (qName.equals("airport")) {
-      aeroport.setIata(attributes.getValue(0));
+      iata = attributes.getValue(0);
       isAirport = true;
     } else if (qName.equals("latitude")) {
       isLatitude = true;
@@ -36,6 +38,7 @@ public class SAXHandler extends DefaultHandler {
       double lon2 = aeroportDest.getLongitude();
 
       double distance = Util.distance(lat1, lon1, lat2, lon2);
+      System.out.println(distance);
 
       graph.ajouterVol(new Vol(distance, aeroportSrc, aeroportDest));
     }
@@ -44,8 +47,9 @@ public class SAXHandler extends DefaultHandler {
   @Override
   public void endElement(String uri, String localName, String qName) {
     if (qName.equals("airport")) {
-      iataAeroports.put(aeroport.getIata(), aeroport);
-      graph.ajouterAeroport(aeroport);
+      Aeroport ajout = new Aeroport(iata, lat, lon);
+      iataAeroports.put(iata, ajout);
+      graph.ajouterAeroport(ajout);
       isAirport = false;
     }
   }
@@ -54,10 +58,10 @@ public class SAXHandler extends DefaultHandler {
   public void characters(char ch[], int start, int length) {
 
     if (isLatitude) {
-      aeroport.setLatitude(Double.valueOf(new String(ch, start, length)));
+      lat = Double.valueOf(new String(ch, start, length));
       isLatitude = false;
     } else if (isLongitude) {
-      aeroport.setLongitude(Double.valueOf(new String(ch, start, length)));
+      lon = Double.valueOf(new String(ch, start, length));
       isLongitude = false;
     }
   }

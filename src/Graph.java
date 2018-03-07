@@ -10,7 +10,11 @@ public class Graph {
 
   public void calculerItineraireMinimisantNombreVol(String iataSrc, String iataDest, String path) {}
 
-  public void ajouterVol(Vol vol) {}
+  public void ajouterVol(Vol vol) {
+    vols.add(vol);
+  }
 
-  public void ajouterAeroport(Aeroport aeroport) {}
+  public void ajouterAeroport(Aeroport aeroport) {
+    aeroports.add(aeroport);
+  }
 }
