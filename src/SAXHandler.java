@@ -13,4 +13,9 @@ public class SAXHandler extends DefaultHandler {
 
   @Override
   public void characters(char ch[], int start, int length) throws SAXException {}
+
+  public Graph getGraph() {
+    // TODO Auto-generated method stub
+    return null;
+  }
 }
