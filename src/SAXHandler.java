@@ -6,22 +6,22 @@ public class SAXHandler extends DefaultHandler {
 
   private Graph graph = new Graph();
 
-  HashMap<String, Aeroport> iataAeroports = new HashMap<>();
+  private HashMap<String, Aeroport> iataAeroports = new HashMap<>();
 
-  boolean isAirport;
-  boolean isLatitude;
-  boolean isLongitude;
+  // private boolean isAirport;
+  private boolean isLatitude;
+  private boolean isLongitude;
 
-  String iata = null;
-  double lat;
-  double lon;
+  private String iata = null;
+  private double lat;
+  private double lon;
 
   @Override
   public void startElement(String uri, String localName, String qName, Attributes attributes) {
 
     if (qName.equals("airport")) {
       iata = attributes.getValue(0);
-      isAirport = true;
+      // isAirport = true;
     } else if (qName.equals("latitude")) {
       isLatitude = true;
     } else if (qName.equals("longitude")) {
@@ -50,7 +50,7 @@ public class SAXHandler extends DefaultHandler {
       Aeroport ajout = new Aeroport(iata, lat, lon);
       iataAeroports.put(iata, ajout);
       graph.ajouterAeroport(ajout);
-      isAirport = false;
+      // isAirport = false;
     }
   }
 
