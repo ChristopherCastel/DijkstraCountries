@@ -1,4 +1,4 @@
-public class Vol { // vol
+public class Vol {
   private double distance;
   private Aeroport origine;
   private Aeroport destination;

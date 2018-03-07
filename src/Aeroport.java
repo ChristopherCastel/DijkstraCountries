@@ -3,11 +3,11 @@ import java.util.Set;
 
 public class Aeroport {
   private String iata;
+  private double latitude;
+  private double longitude;
   private Set<Vol> aeroportsSortants = new HashSet<>();
 
-  public Aeroport(String iata) {
-    this.iata = iata;
-  }
+  public Aeroport() {}
 
   @Override
   public int hashCode() {
@@ -32,5 +32,29 @@ public class Aeroport {
     } else if (!iata.equals(other.iata))
       return false;
     return true;
+  }
+
+  public String getIata() {
+    return iata;
+  }
+
+  public double getLatitude() {
+    return latitude;
+  }
+
+  public double getLongitude() {
+    return longitude;
+  }
+
+  public void setIata(String iata) {
+    this.iata = iata;
+  }
+
+  public void setLatitude(double latitude) {
+    this.latitude = latitude;
+  }
+
+  public void setLongitude(double longitude) {
+    this.longitude = longitude;
   }
 }
