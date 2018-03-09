@@ -8,7 +8,6 @@ public class SAXHandler extends DefaultHandler {
 
   private HashMap<String, Aeroport> iataAeroports = new HashMap<>();
 
-  // private boolean isAirport;
   private boolean isLatitude;
   private boolean isLongitude;
 
@@ -21,7 +20,6 @@ public class SAXHandler extends DefaultHandler {
 
     if (qName.equals("airport")) {
       iata = attributes.getValue(0);
-      // isAirport = true;
     } else if (qName.equals("latitude")) {
       isLatitude = true;
     } else if (qName.equals("longitude")) {
@@ -38,8 +36,9 @@ public class SAXHandler extends DefaultHandler {
       double lon2 = aeroportDest.getLongitude();
 
       double distance = Util.distance(lat1, lon1, lat2, lon2);
-      System.out.println(distance);
 
+      // System.out.println(aeroportSrc);
+      System.out.println("S = " + aeroportSrc + "D = " + aeroportDest);
       graph.ajouterVol(new Vol(distance, aeroportSrc, aeroportDest));
     }
   }
@@ -49,8 +48,7 @@ public class SAXHandler extends DefaultHandler {
     if (qName.equals("airport")) {
       Aeroport ajout = new Aeroport(iata, lat, lon);
       iataAeroports.put(iata, ajout);
-      graph.ajouterAeroport(ajout);
-      // isAirport = false;
+      graph.ajouterAeroport(iata, ajout);
     }
   }
 

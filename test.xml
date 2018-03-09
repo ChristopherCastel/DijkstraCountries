@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<flight xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:noNamespaceSchemaLocation="flight.xsd">
+	<airports>
+		<airport iata="STR" name="Start" city="Brussels"
+			country="Belgium">
+			<longitude>0</longitude>
+			<latitude>0</latitude>
+		</airport>
+		<airport iata="N01" name="Node1" city="Brussels"
+			country="Belgium">
+			<longitude>-1</longitude>
+			<latitude>-1</latitude>
+		</airport>
+		<airport iata="N02" name="Node2" city="Brussels"
+			country="Belgium">
+			<longitude>-2</longitude>
+			<latitude>-1</latitude>
+		</airport>
+		<airport iata="N03" name="Node3" city="Brussels"
+			country="Belgium">
+			<longitude>-2</longitude>
+			<latitude>-2</latitude>
+		</airport>
+		<airport iata="N04" name="Node4"
+			city="Bagdad" country="Irak">
+			<longitude>10</longitude>
+			<latitude>10</latitude>
+		</airport>
+		<airport iata="END" name="Node5" city="Brussels"
+			country="Belgium">
+			<longitude>-5</longitude>
+			<latitude>0</latitude>
+		</airport>
+	</airports>
+	<airlines>
+		<airline iata="_IK" country="Irak">Caca</airline>
+		<airline iata="_BE" country="Belgium">OP</airline>
+	</airlines>
+	<routes>
+		<route airline="_BE" source="STR" destination="N01" />
+		<route airline="_IK" source="STR" destination="N04" />
+		<route airline="_BE" source="N01" destination="N02" />
+		<route airline="_BE" source="N01" destination="N03" />
+		<route airline="_BE" source="N02" destination="END" />
+		<route airline="_IK" source="N04" destination="END" />
+	</routes>
+</flight>

@@ -5,7 +5,11 @@ public class Aeroport {
   private String iata;
   private double latitude;
   private double longitude;
-  private Set<Vol> aeroportsSortants = new HashSet<>();
+  private Set<Vol> volsSortants = new HashSet<>();
+
+  private double cout = Double.MAX_VALUE;
+  private Vol vol;
+
 
   public Aeroport() {}
 
@@ -14,7 +18,6 @@ public class Aeroport {
     this.latitude = lat;
     this.longitude = lon;
   }
-
 
   public String getIata() {
     return iata;
@@ -38,6 +41,30 @@ public class Aeroport {
 
   public void setLongitude(double longitude) {
     this.longitude = longitude;
+  }
+
+  public void ajouterVolSortant(Vol vol) {
+    volsSortants.add(vol);
+  }
+
+  public Set<Vol> getVolsSortants() {
+    return volsSortants;
+  }
+
+  public double getCout() {
+    return cout;
+  }
+
+  public void setCout(double cout) {
+    this.cout = cout;
+  }
+
+  public Vol getVol() {
+    return vol;
+  }
+
+  public void setVol(Vol vol) {
+    this.vol = vol;
   }
 
   @Override
@@ -70,4 +97,5 @@ public class Aeroport {
       return false;
     return true;
   }
+
 }

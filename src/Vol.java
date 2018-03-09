@@ -7,6 +7,37 @@ public class Vol {
     this.distance = distance;
     this.origine = origine;
     this.destination = destination;
+    origine.ajouterVolSortant(this);
+  }
+
+  public double getDistance() {
+    return distance;
+  }
+
+  public void setDistance(double distance) {
+    this.distance = distance;
+  }
+
+  public Aeroport getOrigine() {
+    return origine;
+  }
+
+  public void setOrigine(Aeroport origine) {
+    System.out.println(origine);
+    this.origine = origine;
+  }
+
+  public Aeroport getDestination() {
+    return destination;
+  }
+
+  public void setDestination(Aeroport destination) {
+    this.destination = destination;
+  }
+
+  @Override
+  public String toString() {
+    return "Vol [dist=" + distance + ", start=" + origine + ", end=" + destination + "]";
   }
 
   @Override
