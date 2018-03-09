@@ -16,7 +16,6 @@ public class Graph {
   public void calculerItineraireMiniminantDistance(String iataSrc, String iataDest, String path) {
     Aeroport src = aeroports.get(iataSrc);
     Aeroport dest = aeroports.get(iataDest);
-    System.out.println(dest);
     Comparator<Aeroport> comparator = Comparator.comparingDouble(Aeroport::getCout);
     PriorityQueue<Aeroport> pq = new PriorityQueue<>(comparator);
     pq.addAll(aeroports.values());
