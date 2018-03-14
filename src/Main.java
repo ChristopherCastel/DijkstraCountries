@@ -14,7 +14,8 @@ public class Main {
       SAXHandler userhandler = new SAXHandler();
       saxParser.parse(inputFile, userhandler);
       Graph g = userhandler.getGraph();
-      g.calculerItineraireMiniminantDistance("BRU", "PPTd", "output.xml");
+      g.calculerItineraireMiniminantDistance("BRU", "PPT", "output.xml");
+      g.calculerItineraireMiniminantDistance("STR", "END", "output.xml");
       // g.calculerItineraireMiniminantDistance("BRU", "PPT", "output.xml");
       // g.calculerItineraireMinimisantNombreVol("BRU", "PPT", "output2.xml");
     } catch (Exception e) {
