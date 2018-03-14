@@ -34,11 +34,8 @@ public class SAXHandler extends DefaultHandler {
       double lon1 = aeroportSrc.getLongitude();
       double lat2 = aeroportDest.getLatitude();
       double lon2 = aeroportDest.getLongitude();
-
       double distance = Util.distance(lat1, lon1, lat2, lon2);
 
-      // System.out.println(aeroportSrc);
-      System.out.println("S = " + aeroportSrc + "D = " + aeroportDest);
       graph.ajouterVol(new Vol(distance, aeroportSrc, aeroportDest));
     }
   }
