@@ -20,16 +20,16 @@ public class Main {
 
       double start = 0;
       double total = 0;
+      // g.calculerItineraireMiniminantDistance("BRU", "PPT", "output.xml");
 
       for (int i = 0; i < 10_000; i++) {
         start = System.nanoTime();
-        g.calculerItineraireMiniminantDistance("BRU", "PPT", "output.xml");
+        g.calculerItineraireMinimisantNombreVol("BRU", "PPT", "output2.xml");
         total += (System.nanoTime() - start);
       }
 
       System.out.println("Moyenne : " + (total / 100) / 10E6);
 
-      // g.calculerItineraireMinimisantNombreVol("BRU", "PPT", "output2.xml");
     } catch (Exception e) {
       e.printStackTrace();
     }
