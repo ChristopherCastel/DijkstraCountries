@@ -28,28 +28,27 @@ public class Graph {
 
   // dijkstra
   public void calculerItineraireMiniminantDistance(String iataSrc, String iataDest, String path) {
-    Set<Aeroport> def = new HashSet<>(aeroports.size());
     Aeroport src = aeroports.get(iataSrc);
     Aeroport dest = aeroports.get(iataDest);
     if (src == null || dest == null) {
       throw new AucunCheminException();
     }
+    Set<Aeroport> def = new HashSet<>(aeroports.size());
     src.setCout(0);
     Comparator<Aeroport> comparator = Comparator.comparingDouble(Aeroport::getCout);
     Queue<Aeroport> pq = new PriorityQueue<>(comparator);
     pq.add(src);
     while (!pq.isEmpty()) {
       Aeroport aeroportCourant = pq.remove();
+      if (def.contains(aeroportCourant)) {
+        continue;
+      }
       if (aeroportCourant.equals(dest)) {
-        // afficherRoute(src, dest);
         sauvegarderChemins(src, dest, path);
         resetAeroports();
         return;
       }
       // pas traiter deux fois le même aeroport
-      if (def.contains(aeroportCourant)) {
-        continue;
-      }
       def.add(aeroportCourant);
       // mises à jours des couts
       for (Vol vol : aeroportCourant.getVolsSortants()) {
@@ -72,7 +71,9 @@ public class Graph {
     Aeroport dest = aeroports.get(iataDest);
     file.add(src);
     ajouterConnexions(dest, file);
-    // afficherRoute(src, dest);
+    if (dest.getVol() == null) {
+      throw new AucunCheminException();
+    }
     sauvegarderChemins(src, dest, path);
     resetAeroports();
   }
@@ -105,7 +106,6 @@ public class Graph {
       throw new AucunCheminException();
     }
     Aeroport courant = dest;
-    System.out.println(dest.getCout());
     Deque<Aeroport> trajet = new ArrayDeque<>();
     while (courant != src) {
       trajet.push(courant);
