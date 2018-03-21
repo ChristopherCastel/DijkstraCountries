@@ -3,6 +3,9 @@ import java.util.Set;
 
 public class Aeroport {
   private String iata;
+  private String nom;
+  private String pays;
+  private String ville;
   private double latitude;
   private double longitude;
   private Set<Vol> volsSortants = new HashSet<>();
@@ -13,8 +16,11 @@ public class Aeroport {
 
   public Aeroport() {}
 
-  public Aeroport(String iata, double lat, double lon) {
+  public Aeroport(String iata, String nom, String pays, String ville, double lat, double lon) {
     this.iata = iata;
+    this.nom = nom;
+    this.pays = pays;
+    this.ville = ville;
     this.latitude = lat;
     this.longitude = lon;
   }
@@ -33,6 +39,30 @@ public class Aeroport {
 
   public void setIata(String iata) {
     this.iata = iata;
+  }
+
+  public String getNom() {
+    return nom;
+  }
+
+  public void setNom(String nom) {
+    this.nom = nom;
+  }
+
+  public String getPays() {
+    return pays;
+  }
+
+  public void setPays(String pays) {
+    this.pays = pays;
+  }
+
+  public String getVille() {
+    return ville;
+  }
+
+  public void setVille(String ville) {
+    this.ville = ville;
   }
 
   public void setLatitude(double latitude) {
@@ -69,9 +99,10 @@ public class Aeroport {
 
   @Override
   public String toString() {
-    return "Aeroport [iata=" + iata + ", lat=" + latitude + ", lon=" + longitude + "]";
+    return "Aeroport [iata=" + iata + ", nom=" + nom + ", pays=" + pays + ", ville=" + ville
+        + ", latitude=" + latitude + ", longitude=" + longitude + ", cout=" + cout + ", vol=" + vol
+        + "]";
   }
-
 
   @Override
   public int hashCode() {

@@ -1,10 +1,12 @@
 public class Vol {
   private double distance;
+  private String compagnie;
   private Aeroport origine;
   private Aeroport destination;
 
-  public Vol(double distance, Aeroport origine, Aeroport destination) {
+  public Vol(double distance, String compagnie, Aeroport origine, Aeroport destination) {
     this.distance = distance;
+    this.compagnie = compagnie;
     this.origine = origine;
     this.destination = destination;
     origine.ajouterVolSortant(this);
@@ -16,6 +18,14 @@ public class Vol {
 
   public void setDistance(double distance) {
     this.distance = distance;
+  }
+
+  public String getCompagnie() {
+    return compagnie;
+  }
+
+  public void setCompagnie(String compagnie) {
+    this.compagnie = compagnie;
   }
 
   public Aeroport getOrigine() {
@@ -37,7 +47,8 @@ public class Vol {
 
   @Override
   public String toString() {
-    return "Vol [dist=" + distance + ", start=" + origine + ", end=" + destination + "]";
+    return "Vol [km=" + distance + ", c=" + compagnie + ", o=" + origine + ", d=" + destination
+        + "]";
   }
 
   @Override
